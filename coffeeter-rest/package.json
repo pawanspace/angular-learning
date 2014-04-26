@@ -1,0 +1,8 @@
+{
+  "dependencies":
+  {
+    "body-parser":"*",
+    "mongodb": "*",
+    "mongoose": "*"
+  }
+}

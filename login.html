@@ -1,0 +1,17 @@
+<div>
+			<div class="container">
+				<h3>Login: </h3>
+			
+				<h3 class="error" data-ng-show="loginController.errorMessage"> {{ loginController.errorMessage }} </h3>
+				<form name="loginForm" autocomplete="off">
+					<div>
+						Email: <input type="text"  name="email" data-ng-model="loginController.user.email" size="50" required/>
+						<span class="error"  data-ng-show="loginForm.email.$error.required">* required</span>
+					</div>
+					<br/>
+					<br/>
+					<button data-ng-disabled="loginForm.email.$error.required" data-ng-click="loginController.login(loginController.user)">Save</button>
+				</form>
+			</div>
+			
+		</div>

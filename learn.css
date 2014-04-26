@@ -1,0 +1,38 @@
+.container {
+    margin-top: 30px;
+    border: solid 1px;
+    padding: 5px;
+}
+
+.users th{
+   background-color: #584AC2;
+   color: white
+}
+
+.users{
+    border: solid 1px;
+    margin-top: 20px;
+    width: 100%
+}
+
+.users tr{
+    border: solid 1px;
+    text-align: center;
+}
+
+.users td{
+    padding: 10px;
+    border-right: solid 1px;
+}
+
+.users .even{
+    background-color: #F0F2FD;
+}
+
+.users .odd{
+    background-color: #FFFFFF;
+}
+
+.error{
+    color: red;
+}
