@@ -93,3 +93,149 @@ body {
         border-bottom: 0;
     }
 }
+
+.form-container{
+    position: relative;
+    padding: 45px 15px 15px;
+    margin: 0 -15px 15px;
+    background-color: #fafafa;
+    box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
+    border-color: #e5e5e5 #eee #eee;
+    border-style: solid;
+    border-width: 1px 0
+}
+
+.form-container:after  {
+    content: "Login";
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #bbb;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.coffeeline{
+    background-color: #FFF !important;
+    color: #FFF;
+
+}
+
+.coffeeline:after{
+   content: "" !important; 
+}
+
+.adduser:after{
+    content: "Add new User" !important;
+}
+
+.coffeeLine:after{
+    content: "Coffee Line" !important;
+}
+
+
+.add-user-link{
+    margin: -55px 0 0 350px;
+}
+
+@media (max-width: 600px) {
+  .add-user-link{
+    margin-left: 0;
+    margin-top: 0px;
+    margin-bottom: 30px;
+    display: block;
+  }
+}
+
+.welcome-new-user{
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+.status-content {
+    margin: 10px;
+    border: solid 1px;
+    padding: 10px;
+    background-color: #8B5A2B;
+}
+
+.search-coffeeline{
+    margin-left: 10px;
+    margin-bottom: 30px;
+}
+
+.search-coffeeline .form-group {
+    width: 100% !important;
+}
+
+.search-coffeeline input {
+    width: 100% !important;
+}
+
+.my-repeat-animation.ng-enter, 
+.my-repeat-animation.ng-leave, 
+.my-repeat-animation.ng-move {
+  -webkit-transition: 0.5s linear all;
+  -moz-transition: 0.5s linear all;
+  -o-transition: 0.5s linear all;
+  transition: 0.5s linear all;
+  position:relative;
+}
+
+.my-repeat-animation.ng-enter {
+  left:-10px;
+  opacity:0;
+}
+.my-repeat-animation.ng-enter.ng-enter-active {
+  left:0;
+  opacity:1;
+}
+
+.my-repeat-animation.ng-leave {
+  left:0;
+  opacity:1;
+}
+.my-repeat-animation.ng-leave.ng-leave-active {
+  left:-10px;
+  opacity:0;
+}
+
+.my-repeat-animation.ng-move {
+  opacity:0.5;
+}
+.my-repeat-animation.ng-move.ng-move-active {
+  opacity:1;
+}
+
+.logo{
+    text-align: center;
+    width: 100%;
+    height: 50px;
+    position: fixed;
+    z-index: 200;
+    display: block;
+    top: 0;
+}
+
+.logo .content{
+  margin-top: 5px;
+font-size: 30px;
+}
+
+.header{
+    margin-top: 100px;
+
+}
+.status{
+    display: flex;
+    padding: 5px;
+}
+
+.username{
+    color: #F5FFF5;
+    font-family: cursive;
+    font-size: 15px;
+    font-weight: bold;
+}

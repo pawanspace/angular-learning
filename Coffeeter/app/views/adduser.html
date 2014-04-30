@@ -1,0 +1,47 @@
+
+<div class="form-container adduser">
+			<div class="container">
+				<div class="welcome-new-user" data-ng-show="userController.user.name"> Welcome <span class="bg-info">{{userController.user.name}} </span>
+				</div>
+				<div>
+					<form name="addUserForm" class="form-horizontal" autocomplete="off">
+					
+						<div class="form-group">
+					        <div class="col-sm-10">
+					        	<input type="text" class="form-control" name="name" data-ng-model="userController.user.name" placeholder="Enter name" required/>
+						    </div>
+				        </div>
+						<div class="form-group">
+					        <div class="col-sm-10">
+					        	<input type="email" class="form-control" name="email" data-ng-model="userController.user.email" placeholder="Enter email" required/>
+						    </div>
+				        </div>	
+						
+						<button class="btn btn-success" ng-disabled="!addUserForm.$valid" data-ng-click="userController.addUser(userController.user)">Add</button>
+
+					</form>
+				</div>
+			</div>
+
+
+			
+		</div>
+
+<div class="usersContainer">
+				<table class="table table-hover table-bordered" data-ng-show="userController.users.length > 0">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Email</th>
+						</tr>
+					</thead>
+					<tbody>
+						
+						<tr data-ng-class-odd="'odd'" data-ng-class-even="'even'" data-ng-repeat="user in userController.users">
+							<td>{{user.name}}</td>
+							<td>{{user.email}}</td>
+						</tr>
+					</tbody>
+					
+				</table>
+			</div>

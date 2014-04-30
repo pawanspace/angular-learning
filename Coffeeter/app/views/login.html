@@ -1,0 +1,16 @@
+<div class="form-container">
+			<div class="container">
+			
+				<h3 class="bg-danger" data-ng-show="loginController.errorMessage"> {{ loginController.errorMessage }} </h3>
+				<form name="loginForm" class="form-horizontal"  autocomplete="off">
+					<div class="form-group">
+				        <div class="col-sm-10">
+					        <input type="email" class="form-control"  name="email" data-ng-model="loginController.user.email"  placeholder="Enter email" required>
+					    </div>
+				        
+				     </div>
+					<button class="btn" ng-class="{'btn-danger':  loginController.errorMessage, 'btn-success':  !loginController.errorMessage}" data-ng-disabled="loginForm.email.$error.required" data-ng-click="loginController.login(loginController.user)">Login</button>
+				</form>
+			</div>
+			
+		</div>

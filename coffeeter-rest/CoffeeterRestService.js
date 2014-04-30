@@ -20,6 +20,15 @@ db.once('open', function callback () {
   });
 
   app.User = mongoose.model('User', app.UserSchema);
+
+
+  app.CoffeeLineSchema = mongoose.Schema({
+    status: String,
+    // user:  { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
+    user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
+  });
+
+  app.CoffeeLine = mongoose.model('CoffeeLine', app.CoffeeLineSchema);
 });
 
 
@@ -33,7 +42,7 @@ db.once('open', function callback () {
 app.use(function (req, res, next) {
 
     // Website you wish to allow to connect
-    res.setHeader('Access-Control-Allow-Origin', 'http://0.0.0.0:8000');
+    res.setHeader('Access-Control-Allow-Origin', '*');
 
     // Request methods you wish to allow
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -65,17 +74,32 @@ app.get('/users/getUser/:name', function(req, res) {
 
 app.get('/users/getUsers', function(req, res) {
   res.type('application/json');
-  app.User.find(function(error, users){
+  app.User.find().sort([['id', 'descending']]).exec(function(error, users){
   	console.log(users);
  	res.json(users);
   })
 });
+
+
+app.get('/users/getCoffeeLine', function(req, res) {
+  res.type('application/json');
+  app.CoffeeLine.find().populate('user').exec(function(error, items){
+  	console.log(items);
+ 	res.json(items);
+  })
+});
  
 
-app.post('/login', function(req, res) {
-	var employee = req.body;
-	console.log("Got request: " + JSON.stringify(employee));
-	res.send(employee);		
+app.post('/addCoffeeItem', function(req, res) {
+	var item = req.body;
+//	console.log("Got request: " + item.user.name);
+//	console.log("Got request: " + item.status);
+	var newItem = new app.CoffeeLine(item);
+	newItem.save(function(error, newItem){
+		console.log(error);
+		console.log("Saved new item: "+item);
+	});
+	res.send(item);		
 });	
 
 app.post('/addUser', function(req, res) {

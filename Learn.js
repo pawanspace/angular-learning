@@ -147,14 +147,14 @@ Coffee.coffeeter.config(["$routeProvider", function($routeProvider){
 		controller : "UserController as userController",
 		templateUrl: "adduser.html"
 	})
-	.when("/login/:error", {
+	.when("/login/:error?", {
 		controller : "LoginController as loginController",
 		templateUrl: "login.html"
 	})
-	.when("/login", {
-		controller : "LoginController as loginController",
-		templateUrl: "login.html"
-	})
+	// .when("/login", {
+	// 	controller : "LoginController as loginController",
+	// 	templateUrl: "login.html"
+	// })
 	.otherwise({
 		redirectTo:	"/login"
 	});
