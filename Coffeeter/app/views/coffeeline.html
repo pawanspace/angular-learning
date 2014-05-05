@@ -29,14 +29,15 @@
 
 <div class=" form-container coffeeline">
 	
-	 <div class="text-primary" ng-show="coffeeLineController.newCoffeetes">
+	 <div class="text-primary" ng-show="coffeeLineController.newCoffeetes > 0">
 	  	<a ng-click="coffeeLineController.refresh()">{{ coffeeLineController.newCoffeetes }} new coffeete<span ng-show="coffeeLineController.newCoffeetes > 1">s</span></a>
 	</div> 
 	<div class="stream">
 		<div class="status-content my-repeat-animation" data-ng-repeat="item in coffeeLineController.items | filter:searchText">
 
 				<i class="glyphicon glyphicon-user"></i><span class="username">  {{ item.realUser.name  || item.user.name}}</span>
-				<span class="status">{{ item.status }}</span> 
+				<span class="status" ng-bind-html="coffeeLineController.replaceSmilies(item.status)"></span> 
+				<span class="time" ng-bind="coffeeLineController.time(item.time)"></span>
 		</div>
 	</div>
 

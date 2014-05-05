@@ -23,18 +23,7 @@ Coffee.coffeeter.factory("UserFactory", ["findUserByEmailFilter" ,"bootstrapFact
 
 			loadUsers: function(){
 				var currentScope = this;
-				$http.get("http://192.168.1.67:9999/users/getUsers").success(function(users){
-//					console.table(users);
-
-					// var item = {
-					// 	status: "This is my first status",
-					// 	user: users[0]._id
-					// }
-
-					// $http.post("http://localhost:9999/addCoffeeItem", item).success(function(resp){
-					// 	console.log("saved"+resp);
-					// });
-
+					$http.get("http://192.168.66.76:9999/users/getUsers").success(function(users){
 					currentScope.setUsers(users);
 				});
 
@@ -50,7 +39,7 @@ Coffee.coffeeter.factory("UserFactory", ["findUserByEmailFilter" ,"bootstrapFact
 			},
 
 			saveUser: function(user, successCallback){
-				$http.post("http://192.168.1.67:9999/addUser", user).success(successCallback);
+				$http.post("http://192.168.66.76:9999/addUser", user).success(successCallback);
 			},
 
 			contains: function(user){

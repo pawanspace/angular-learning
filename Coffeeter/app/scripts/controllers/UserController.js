@@ -16,8 +16,4 @@ Coffee.coffeeter.controller("UserController", ["$rootScope", function($rootScope
            });
         };
 
-  //      this.init = function(){
-		//     bootstrapFactory.bootstrap();  
-		// }
-        
  }]);

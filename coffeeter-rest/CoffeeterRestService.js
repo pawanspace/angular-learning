@@ -24,7 +24,7 @@ db.once('open', function callback () {
 
   app.CoffeeLineSchema = mongoose.Schema({
     status: String,
-    // user:  { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
+    time : { type : Date, default: Date.now },
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
   });
 
@@ -83,7 +83,7 @@ app.get('/users/getUsers', function(req, res) {
 
 app.get('/users/getCoffeeLine', function(req, res) {
   res.type('application/json');
-  app.CoffeeLine.find().populate('user').exec(function(error, items){
+  app.CoffeeLine.find().populate('user').sort([['time', 'descending']]).exec(function(error, items){
   	console.log(items);
  	res.json(items);
   })

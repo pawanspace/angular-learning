@@ -9,7 +9,7 @@
 					    </div>
 				        
 				     </div>
-					<button class="btn" ng-class="{'btn-danger':  loginController.errorMessage, 'btn-success':  !loginController.errorMessage}" data-ng-disabled="loginForm.email.$error.required" data-ng-click="loginController.login(loginController.user)">Login</button>
+					<button id="login" class="btn" ng-class="{'btn-danger':  loginController.errorMessage, 'btn-success':  !loginController.errorMessage}" data-ng-disabled="loginForm.email.$error.required" data-ng-click="loginController.login(loginController.user)">Login</button>
 				</form>
 			</div>
 			

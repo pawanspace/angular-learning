@@ -23,6 +23,7 @@ module.exports = function(config) {
       'test/spec/**/*.js'
     ],
 
+    
     // list of files / patterns to exclude
     exclude: [],
 
@@ -36,7 +37,7 @@ module.exports = function(config) {
 
     // enable / disable watching file and executing tests whenever any file changes
     autoWatch: false,
-
+    
 
     // Start these browsers, currently available:
     // - Chrome

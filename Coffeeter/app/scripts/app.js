@@ -36,10 +36,6 @@ Coffee.coffeeter.config(["$routeProvider", function($routeProvider){
     controller : "CoffeeLineController as coffeeLineController",
     templateUrl: "views/coffeeline.html"
   })
-  // .when("/login", {
-  //  controller : "LoginController as loginController",
-  //  templateUrl: "login.html"
-  // })
   .otherwise({
     redirectTo: "/login"
   });
@@ -56,12 +52,9 @@ Coffee.auth = function($rootScope, $location){
                   }
                 };
                 $rootScope.$on('$locationChangeStart', function (event, next) {
-                  if( next.indexOf("/login") === -1 && !$rootScope.assertAuth()){
-                    $location.path("/login");
-                  }
-                  // }else if (next.indexOf("/login") !== -1  && $rootScope.assertAuth()){
-                  //  $location.path("/users");
-                  // }
+                    if( next.indexOf("/login") === -1 && !$rootScope.assertAuth()){
+                      $location.path("/login");
+                    }
                   });
               };
 

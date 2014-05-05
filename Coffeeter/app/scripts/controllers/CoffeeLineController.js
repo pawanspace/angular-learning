@@ -2,7 +2,14 @@
 
 var Coffee = Coffee || {};
 
-Coffee.coffeeter.controller("CoffeeLineController", [ "$rootScope", "CoffeeLineData", "$timeout", function($rootScope, coffeeLineData, $timeout){
+moment.fn.fromNowOrNow = function (a) {
+    if (Math.abs(moment().diff(this)) < 25000) { // 25 seconds before or after now
+        return 'just now';
+    }
+    return this.fromNow(a);
+}
+
+Coffee.coffeeter.controller("CoffeeLineController", [ "$rootScope", "CoffeeLineData", "$timeout", '$sce', function($rootScope, coffeeLineData, $timeout, $sce){
      
      var self = this;
 	
@@ -14,17 +21,27 @@ Coffee.coffeeter.controller("CoffeeLineController", [ "$rootScope", "CoffeeLineD
  			$timeout(tick, 5000);
  		});
   		
-  		//self.items = $rootScope.coffeeLineFactory.getCoffeeLineItems();
-	 	//$rootScope.coffeeLineFactory.setCoffeeLineItems(coffeeLineData.query());
-	 	
+   	
 	 }
 
 	(function init(){
 		 self.items = $rootScope.coffeeLineFactory.getCoffeeLineItems();
-		 //$rootScope.coffeeLineFactory.setCoffeeLineItems(coffeeLineData.query());
 		 tick();
 	})();   
 
+
+	this.time = function(time){
+		return moment(time).fromNowOrNow();
+	}
+
+    this.replaceSmilies = function(smilyText){
+    	smilyText = smilyText.replace(/:\)/ig, '<img src="images/smiley-glad-icon.png">');
+    	smilyText = smilyText.replace(/:D/ig, '<img src="images/smiley-laugh-icon.png">');
+    	smilyText = smilyText.replace(/:\(/ig, '<img src="images/smiley-sad-icon.png">');
+    	smilyText = smilyText.replace(/:p/ig, '<img src="images/foolish-icon.png">');
+    	smilyText = smilyText.replace(/;\)/ig, '<img src="images/smiley-wink-icon.png">');
+    	return $sce.trustAsHtml(smilyText);
+    }
     
 
 	 this.refresh =function(){
@@ -39,7 +56,7 @@ Coffee.coffeeter.controller("CoffeeLineController", [ "$rootScope", "CoffeeLineD
      	var promise = $rootScope.coffeeLineFactory.add(item);
      	item.realUser = $rootScope.user;
      	self.item = {};
-     	self.items.push(item);
+     	self.items.unshift(item);
      }
 
 }]);

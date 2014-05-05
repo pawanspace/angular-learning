@@ -7,6 +7,7 @@ Coffee.coffeeter.controller("LoginController", ["$rootScope","$routeParams", "$l
 
        this.login = function(user){
        		var realUser = $rootScope.userFactory.contains(user);
+   
        		if(realUser !== null){
 				$rootScope.user = realUser;
 				$location.path("/coffeeline");
